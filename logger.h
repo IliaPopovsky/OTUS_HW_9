@@ -59,4 +59,21 @@ LogLevel logger_getLevel(void);
  *
  * @return Non-zero value if the log level is enabled
  */
+
+ void logger_flush(void);
+
+/**
+ * Log a message.
+ * Make sure to call one of the following initialize functions before starting logging.
+ * - logger_initConsoleLogger()
+ * - logger_initFileLogger()
+ *
+ * @param[in] level A log level
+ * @param[in] file A file name string
+ * @param[in] line A line number
+ * @param[in] fmt A format string
+ * @param[in] ... Additional arguments
+ */
+void logger_log(LogLevel level, const char* file, int line, const char* fmt, ...);
+
 #endif // LOGGER_H_INCLUDED
