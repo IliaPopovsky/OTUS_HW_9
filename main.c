@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include "logger.h"
 
+int logger_init(const char * filename);
+
 void* thread_body(void* arg)
 {
     for(int i = 0; i < 2; ++i)
@@ -15,7 +17,7 @@ void* thread_body(void* arg)
         sleep(1);
         test_block = malloc(10000000000 * 10000000000);
         if (test_block == NULL){
-            LOG_ERROR("malloc test_block error!");
+            LOG_ERROR("%s", "malloc test_block error!");
         }
         sleep(2);
     }
@@ -33,7 +35,7 @@ int main(void)
     char *test_block_main = NULL;
     test_block_main = malloc(10000000000 * 10000000000);
     if (test_block_main == NULL){
-        LOG_ERROR("malloc test_block_main error!");
+        LOG_ERROR("%s", "malloc test_block_main error!");
     }
     pthread_t thread1, thread2;
     pthread_create(&thread1, NULL, thread_body, "Test string1");
