@@ -12,6 +12,7 @@
 #define MAX_LEN 255
 #define SIZE_BUF 100
 
+extern long int syscall (long int __sysno, ...) __THROW;
 static volatile int logger_activate;
 static volatile LogLevel logLevel_t = LogLevel_INFO;
 static pthread_mutex_t mutex;
